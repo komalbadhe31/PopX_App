@@ -1,20 +1,61 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import Login from './components/Login';
+import Registration from './components/Registration';
+import Account_Setting from './components/Account_Setting'
+import Dashboard from './components/Dashboard'
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
+const Stack = createStackNavigator();
+const App = () => {
+   return (
+      <NavigationContainer  independent={true}>
+      <Stack.Navigator
+      initialRouteName="Dashboard"
+            screenOptions={{
+               headerTitleAlign: 'center',
+               headerShown:false,
+               headerStyle: {
+                 backgroundColor: 'thistle',
+               },
+               headerTintColor: '#fff',
+             }}>
+
+
+  <Stack.Screen  
+         name="Dashboard" 
+         component={Dashboard} 
+		 options={{ title: 'Dashboard' }}/>
+
+	  <Stack.Screen 
+         name="Login" 
+         component={Login} 
+         options={{ title: 'Login', headerLeft: null }} />
+
+      <Stack.Screen 
+         name="Registration" 
+         component={Registration} 
+         options={{ title: 'Registration' }} />
+
+      <Stack.Screen  
+         name="Account_Setting" 
+         component={Account_Setting} 
+		 options={{ title: 'Account Setting', headerShown:true,headerLeft:null,
+       headerTitleAlign: 'left',
+       headerStyle: {
+         backgroundColor: 'white',
+       }, 
+       headerTitleStyle: {
+         color: 'black'
+       }}}/>
+
+
+	  
+      </Stack.Navigator>
+      </NavigationContainer>
+   );
+};
+
+export default App;
