@@ -3,7 +3,7 @@
 
 
 **To run the project**\
-download and extract the code. On command line go to the project folder and type following command: \
+download and extract the code. On command line go to the project folder and type following command: 
 
 **install the following dependencies:** \
 npm install react-native-paper \
